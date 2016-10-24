@@ -55,25 +55,39 @@ namespace Lab3
                 return false;
             return prime(n, i+1);
         }
-
-        static string removeVocals(string s)
+        
+        /*Pseudocode
+         *      removeVocals(s,i)
+         *         if(i>s.Length)
+         *              return s
+         *         if(s[i]='a'||'e'||'i'||'o'||'u'||'y')
+         *              s=s.Remove(i,1)
+         *              return removeVocals(s,i)
+         *         else
+         *              i++
+         *              return removeVocals(s,i)
+         */
+        static string removeVocals(string s,int i)
         {
-            /*world=hello
-             * if word is vocal
-             * removeVocals(word[1:])
-             *              ello
-             *               llo
-             *                lo
-             *                 o
-             * return fisrt +  ...
-             * return ...
-             * 
-             * */
+            if (i >= s.Length)
+                return s;
+            if (s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' || s[i] == 'y')
+            {
+                s = s.Remove(i, 1);
+                return removeVocals(s,i);
+            }
+            else
+            {
+                i++;
+                return removeVocals(s,i);
+            }
+
         }
         static void Main(string[] args)
         {
             //Console.WriteLine(reverseString("This is awesome"));
-            Console.WriteLine(prime(11,2));
+            //Console.WriteLine(prime(11,2));
+            Console.WriteLine(removeVocals("beautiful", 0));
             Console.ReadLine();
         }
     }

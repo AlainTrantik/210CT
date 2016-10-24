@@ -1,0 +1,6 @@
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\bin\Debug\Td1.exe.config
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\bin\Debug\Td1.exe
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\bin\Debug\Td1.pdb
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\obj\Debug\Td1.csprojResolveAssemblyReference.cache
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\obj\Debug\Td1.exe
+C:\Users\Alain\Documents\Visual Studio 2013\Projects\ProgA3\Algorithms Coventry\Lab1\Td1\Td1\obj\Debug\Td1.pdb

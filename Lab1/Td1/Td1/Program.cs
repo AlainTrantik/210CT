@@ -14,28 +14,28 @@ namespace Td1
 
         /*Intermediate tasks
          */
-        static void displayArray(int[] tab)
+        static void displayArray(int[] array)
         {
-            for (int i = 0; i < tab.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                Console.Write(tab[i] + "|");
+                Console.Write(array[i] + "|");
             }
         }
-        static int [] shuffle(int[] tab)
+        static int [] shuffle(int[] array)
         {
-            //Mélange un tableau en permutant un élement avec un autre pris au hasard graçe à la fonction random.
-            displayArray(tab);
+            //The algorithm below randomly shuffles an array of integers by permutation of each elements with a random element of the array.
+            displayArray(array);
             Random rand = new Random();
-            for (int i = 0; i < tab.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                int r = rand.Next(0, tab.Length);
-                int tmp = tab[i];
-                tab[i] = tab[r];
-                tab[r] = tmp;
+                int r = rand.Next(0, array.Length);
+                int tmp = array[i];
+                array[i] = array[r];
+                array[r] = tmp;
             }
             Console.WriteLine("\n");
-            displayArray(tab);
-            return tab;
+            displayArray(array);
+            return array;
         }
         static int Factorielle(int n)
         {
@@ -199,8 +199,8 @@ namespace Td1
         }
         static void Main(string[] args)
         {
-            //int[] tab = {1,2,3,4,5,6,7,8,9};
-            //shuffle(tab);
+            //int[] array = {1,2,3,4,5,6,7,8,9};
+            //shuffle(array);
             //Console.WriteLine(zeros(Factorielle(10)));
             Aliens(3, 5, 30); //30 days after a single alien invades
             //sparseMatrix(3);

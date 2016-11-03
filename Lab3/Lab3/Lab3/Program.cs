@@ -64,8 +64,7 @@ namespace Lab3
          *              s=s.Remove(i,1)
          *              return removeVocals(s,i)
          *         else
-         *              i++
-         *              return removeVocals(s,i)
+         *              return removeVocals(s,i+1)
          */
         static string removeVocals(string s,int i)
         {
@@ -78,8 +77,7 @@ namespace Lab3
             }
             else
             {
-                i++;
-                return removeVocals(s,i);
+                return removeVocals(s,i+1);
             }
 
         }
@@ -87,7 +85,7 @@ namespace Lab3
         {
             //Console.WriteLine(reverseString("This is awesome"));
             //Console.WriteLine(prime(11,2));
-            Console.WriteLine(removeVocals("beautiful", 0));
+            Console.WriteLine(removeVocals("beautiful   ", 0));
             Console.ReadLine();
         }
     }

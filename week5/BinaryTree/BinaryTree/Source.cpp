@@ -12,7 +12,9 @@ public:
 	BinTreeNode* right;
 
 };
-
+/*On part de la racine de l'arbre. On possède une valeur item que l'on souhaiterait insérer dans l'ABR. 
+Si l'élément en cours n'existe pas, on insère item à cet emplacement. Sinon, on compare item à l'élément en cours. 
+S'il a une valeur supérieure, on l'insère dans le sous-arbre droit, sinon, on l'insère dans le sous-arbre gauche (récursivité).*/
 BinTreeNode* tree_insert(BinTreeNode* tree, int item){
 	if (tree == NULL)
 		tree = new BinTreeNode(item);
@@ -29,6 +31,9 @@ BinTreeNode* tree_insert(BinTreeNode* tree, int item){
 		tree_insert(tree->right, item);
 	return tree;
 
+}
+
+BinTreeNode* tree_delete(BinTreeNode* tree, int item){
 }
 
 void postorder(BinTreeNode* tree){

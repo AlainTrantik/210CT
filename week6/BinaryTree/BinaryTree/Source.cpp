@@ -33,9 +33,6 @@ BinTreeNode* tree_insert(BinTreeNode* tree, int item){
 
 }
 
-BinTreeNode* tree_delete(BinTreeNode* tree, int item){
-}
-
 void postorder(BinTreeNode* tree){
 	if (tree->left != NULL)
 		postorder(tree->left);
@@ -62,5 +59,6 @@ int main(int argc, char *argv[])
 	tree_insert(t, 4);
 	tree_insert(t, 11);
 	in_order(t);
+	getchar();
 	return 0;
 }

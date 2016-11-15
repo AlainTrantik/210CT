@@ -59,16 +59,15 @@ public:
 		}
 	}
 	void remove(Node* n) {
-		if (n != 0  && this->head != n && this->tail != n) {
-
-			n->next->prev = n->prev;
-			n->prev->next = n->next;
-		}
 		if (this->head == n) {
 			this->head = n->next;
 		}
-		if (this->tail == n) {
+		else if (this->tail == n) {
 			this->tail = n->prev;
+		}
+		else{
+			n->next->prev = n->prev;
+			n->prev->next = n->next;
 		}
 		delete n;
 	}
@@ -78,7 +77,7 @@ public:
 		while (i != 0){
 			std::cout << i->value << ",";
 			i = i->next;
-		}
+			}
 		std::cout << std::endl;
 	}
 };
@@ -86,12 +85,12 @@ public:
 int main(int argc, char *argv[])
 {
 	List* l = new List();
-	Node* a = new Node(6);
+	Node* a = new Node(8);
 	l->insert(l->head, new Node(4));
+	l->insert(l->head, new Node(6));
 	l->insert(l->head, a);
-	l->insert(l->head, new Node(8));
 	l->display();
-	l->remove(a);
+	l->remove(l->head);
 	l->display();
 	getchar();
 	return 0;

@@ -38,6 +38,8 @@ public:
 			delete head;
 			head = temp;
 		}
+		std::cout << "List destructed!" << std::endl;
+
 	}
 	void insert(Node* n, Node* x){
 		//Not actually perfect: how do we prepend to an existing list?
@@ -54,22 +56,30 @@ public:
 			x->prev = 0;
 			x->next = 0;
 		}
-		else if (this->tail = n){
+		else if (this->tail == n){
 			this->tail = x;
 		}
 	}
-	void remove(Node* n) {
-		if (this->head == n) {
-			this->head = n->next;
-		}
-		else if (this->tail == n) {
-			this->tail = n->prev;
-		}
-		else{
+	bool remove(Node* n) {
+		if (n != 0 && this->head != n && this->tail != n) {
+			std::cout << "Remove node" << std::endl;
 			n->next->prev = n->prev;
 			n->prev->next = n->next;
+			return true;
 		}
-		delete n;
+		if (this->head == n) {
+			std::cout << "Remove head" << std::endl;
+			this->head = n->next;
+			n->next->prev = 0;
+			return true;
+		}
+		else if (this->tail == n) {
+			std::cout << "Remove tail" << std::endl;
+			this->tail = n->prev;
+			n->prev->next = 0;
+			return true;
+		}
+		return false;
 	}
 	void display(){
 		Node* i = this->head;
@@ -90,8 +100,9 @@ int main(int argc, char *argv[])
 	l->insert(l->head, new Node(6));
 	l->insert(l->head, a);
 	l->display();
-	l->remove(l->head);
+	l->remove(l->tail);
 	l->display();
+	delete l;
 	getchar();
 	return 0;
 }

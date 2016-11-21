@@ -1,4 +1,8 @@
 #include <iostream>
+#include <stack>
+using namespace std;
+
+
 
 class BinTreeNode{
 public:
@@ -12,9 +16,9 @@ public:
 	BinTreeNode* right;
 
 };
-/*On part de la racine de l'arbre. On possède une valeur item que l'on souhaiterait insérer dans l'ABR. 
+/*On part de la racine de l'arbre. On possède une valeur item que l'on souhaite insérer dans l'ABR. 
 Si l'élément en cours n'existe pas, on insère item à cet emplacement. Sinon, on compare item à l'élément en cours. 
-S'il a une valeur supérieure, on l'insère dans le sous-arbre droit, sinon, on l'insère dans le sous-arbre gauche (récursivité).*/
+S'il a une valeur supérieure, on l'insère dans le sous-arbre droit, sinon, on l'insère dans le sous-arbre gauche (récursivité)...*/
 BinTreeNode* tree_insert(BinTreeNode* tree, int item){
 	if (tree == NULL)
 		tree = new BinTreeNode(item);
@@ -48,6 +52,22 @@ void in_order(BinTreeNode* tree){
 	if (tree->right != NULL)
 		in_order(tree->right);
 }
+void in_order2(BinTreeNode* tree){
+	stack<BinTreeNode*> S;
+	BinTreeNode* current = tree;
+	S.push(current);
+	while (current != NULL && !S.empty()){
+		if(current!=NULL)
+			S.push(current);
+		current = current->left;
+		if (current == NULL){
+			BinTreeNode* poped=S.top();
+			S.pop();
+			std::cout << poped->value << std::endl;
+			current = poped->right;
+		}
+	}
+}
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +78,7 @@ int main(int argc, char *argv[])
 	tree_insert(t, 3);
 	tree_insert(t, 4);
 	tree_insert(t, 11);
-	in_order(t);
+	in_order2(t);
 	getchar();
 	return 0;
 }

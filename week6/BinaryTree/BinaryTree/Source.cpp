@@ -52,7 +52,7 @@ void in_order(BinTreeNode* tree){
 	if (tree->right != NULL)
 		in_order(tree->right);
 }
-void in_order2(BinTreeNode* tree){
+void in_order_iterative(BinTreeNode* tree){
 	stack<BinTreeNode*> S;
 	BinTreeNode* current = tree;
 	S.push(current);
@@ -61,7 +61,6 @@ void in_order2(BinTreeNode* tree){
 		if (current != NULL) {
 			S.push(current);
 			current = current->left;
-
 		}
 		if (current == NULL){
 			BinTreeNode* popped=S.top();
@@ -81,7 +80,7 @@ int main(int argc, char *argv[])
 	tree_insert(t, 3);
 	tree_insert(t, 4);
 	tree_insert(t, 11);
-	in_order2(t);
+	in_order_iterative(t);
 	getchar();
 	return 0;
 }

@@ -56,15 +56,18 @@ void in_order2(BinTreeNode* tree){
 	stack<BinTreeNode*> S;
 	BinTreeNode* current = tree;
 	S.push(current);
-	while (current != NULL && !S.empty()){
-		if(current!=NULL)
+	current = current->left;
+	while (!S.empty()){
+		if (current != NULL) {
 			S.push(current);
-		current = current->left;
+			current = current->left;
+
+		}
 		if (current == NULL){
-			BinTreeNode* poped=S.top();
+			BinTreeNode* popped=S.top();
 			S.pop();
-			std::cout << poped->value << std::endl;
-			current = poped->right;
+			std::cout << popped->value << std::endl;
+			current = popped->right;
 		}
 	}
 }

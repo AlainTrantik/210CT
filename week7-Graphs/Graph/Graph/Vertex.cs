@@ -11,7 +11,7 @@ namespace Graph
     class Vertex
     {
         public int data;
-        public List<Vertex> neigbors;
+        public List<int> edges;
 
         public Vertex()
         {
@@ -35,26 +35,25 @@ namespace Graph
             }
         }
 
-        public List<Vertex> Neighbors
+        public List<int> Neighbors
         {
             get
             {
-                return neigbors;
+                return edges;
             }
             set
             {
-                this.neigbors = value;
+                this.edges = value;
             }
         }
-
-        //Add egdes function
-        public void Add(Vertex[] vertices)
+        public bool addEdge(int node)
         {
-            for(int i = 0; i < vertices.Length; i++)
+            if (node != null)
             {
-                this.neigbors.Add(vertices[i]);
+                this.edges.Add(node);
+                return true;
             }
+            return false;
         }
-
     }   
 }

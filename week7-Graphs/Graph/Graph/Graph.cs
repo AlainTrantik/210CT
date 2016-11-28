@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace Graph
 {
+    /* class Graph
+     *      vertices <- []
+     *      
+     *   addNode(v)
+     *      if(v!=null)
+     *          vertices.Add(v)
+     *          return TRUE
+     *      return FALSE
+     * 
+     * */
     class Graph
     {
         public List<Vertex> vertices;
@@ -25,6 +35,8 @@ namespace Graph
                 this.vertices = value;
             }
         }
+
+        //To add a node a simply add it the list of nodes
         public bool addNode(Vertex v)
         {
             if (v != null)

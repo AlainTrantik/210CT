@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,40 @@ namespace Graph
             foreach (Vertex v in l)
                 Console.WriteLine(v.data);
         }
+        static Vertex findVertexByValue(Graph G,int e)
+        {
+            foreach(Vertex v in G.vertices)
+            {
+                if (v.data == e)
+                {
+                    return v;
+                }
+            }
+            return null;
+        }
+
+        static void saveToText(List<Vertex> vs,string fileName)
+        {
+            string path = @"h:\"+fileName+".txt";
+            List<int> values = new List<int>();
+            foreach(Vertex v in vs)
+            {
+                values.Add(v.data);
+            }
+
+            string [] array = values.Select(x => x.ToString()).ToArray();
+
+
+            // This text is added only once to the file.
+            if (!File.Exists(path))
+            {
+                // Create a file to write to.
+                File.WriteAllLines(path, array);
+            }
+        }
         static List<Vertex> DFS(Graph G, Vertex v)
         {
+            Console.WriteLine("DFS traversal");
             Stack<Vertex> S = new Stack<Vertex>();
             List<Vertex> visited = new List<Vertex>();
             S.Push(v);
@@ -24,15 +57,18 @@ namespace Graph
                  Vertex u = S.Pop();
                  if(!visited.Contains(u))
                  {
-                     visited.Add(u);
-                     //FOR ALL EDGES e, FROM u, S.PUSH(e.to)
-                 }
+                    visited.Add(u);
+                    foreach (int e in u.edges)
+                        S.Push(findVertexByValue(G, e));
+                }
             }
+            saveToText(visited,"DFS");
             return visited;
         }
 
         static List<Vertex> BFS(Graph G, Vertex v)
         {
+            Console.WriteLine("BFS traversal");
             Queue<Vertex> Q = new Queue<Vertex>();
             List<Vertex> visited = new List<Vertex>();
             Q.Enqueue(v);
@@ -42,9 +78,11 @@ namespace Graph
                 if (!visited.Contains(u))
                 {
                     visited.Add(u);
+                    foreach (int e in u.edges)
+                        Q.Enqueue(findVertexByValue(G, e));
                 }
-                //FOR ALL EDGES e, FROM u, Q.enqueue(e.to)
             }
+            saveToText(visited,"BFS");
             return visited;
         }
 
@@ -100,6 +138,9 @@ namespace Graph
             ten.addEdge(9);
 
             myGraph.addNode(ten); //I add it to the graph
+            displayList(DFS(myGraph, one));
+            displayList(BFS(myGraph, one));
+            Console.ReadLine();
         }
     }
 }

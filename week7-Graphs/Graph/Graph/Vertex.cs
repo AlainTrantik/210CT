@@ -24,7 +24,7 @@ namespace Graph
     class Vertex
     {
         public int data;
-        public List<int> edges;
+        public List<int> edges = new List<int>();
 
         public Vertex()
         {
@@ -60,14 +60,9 @@ namespace Graph
             }
         }
         //Function to add an edge, I add the value of the node in the adjacency list of both nodes with the other one
-        public bool addEdge(int node)
+        public void addEdge(int node)
         {
-            if (node != null)
-            {
-                this.edges.Add(node);
-                return true;
-            }
-            return false;
-        }
+            edges.Add(node);
+         }
     }   
 }

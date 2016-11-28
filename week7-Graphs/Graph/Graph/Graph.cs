@@ -18,7 +18,7 @@ namespace Graph
      * */
     class Graph
     {
-        public List<Vertex> vertices;
+        public List<Vertex> vertices = new List<Vertex>();
 
         public Graph()
         {

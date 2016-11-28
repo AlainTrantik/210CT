@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Graph
 {
-// I chose the adjacency list approach so I created a new class Vertex (Node) with a data and a integer list representing the edges. 
+// I chose the adjacency list approach so I created a new class Vertex (Node) with a label and a list of vertices representing the edges. 
     /*  
      * class Vertex
-     *      data <- 0
+     *      label <- 0
      *      edges <- []
      *      
      *   addEdge(node)
@@ -23,8 +23,8 @@ namespace Graph
 
     class Vertex
     {
-        public int data;
-        public List<int> edges = new List<int>();
+        public int label;
+        public List<Vertex> edges = new List<Vertex>();
 
         public Vertex()
         {
@@ -32,7 +32,7 @@ namespace Graph
 
         public Vertex(int data)//Constructor to Create/Add a new node
         {
-            this.data = data;
+            this.label = data;
         }
 
         //Getter and Setter
@@ -40,15 +40,15 @@ namespace Graph
         {
             get
             {
-                return data;
+                return label;
             }
             set
             {
-                this.data = value;
+                this.label = value;
             }
         }
 
-        public List<int> Neighbors
+        public List<Vertex> Edges
         {
             get
             {
@@ -59,10 +59,15 @@ namespace Graph
                 this.edges = value;
             }
         }
-        //Function to add an edge, I add the value of the node in the adjacency list of both nodes with the other one
-        public void addEdge(int node)
+        //Function to add an edge, I add the node in the adjacency list of both nodes with the other one
+        public bool addEdge(Vertex node)
         {
-            edges.Add(node);
+            if (node != null)
+            {
+                edges.Add(node);
+                return true;
+            }
+            return false;
          }
     }   
 }

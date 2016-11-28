@@ -46,7 +46,7 @@ namespace Graph
             }
             return false;
         }
-
+        //To add several nodes in one time using an array of vertices
         public void addNodes(Vertex[] v)
         {
             for (int i = 0; i < v.Length; i++)

@@ -13,32 +13,18 @@ namespace Graph
         static void displayList(List<Vertex> l)
         {
             foreach (Vertex v in l)
-                Console.WriteLine(v.data);
+                Console.WriteLine(v.label); 
         }
-        static Vertex findVertexByValue(Graph G,int e)
+        static void saveToText(List<Vertex> vs,string fileName) //Function to save a List of vertices in a text file
         {
-            foreach(Vertex v in G.vertices)
-            {
-                if (v.data == e)
-                {
-                    return v;
-                }
-            }
-            return null;
-        }
-
-        static void saveToText(List<Vertex> vs,string fileName)
-        {
-            string path = @"h:\"+fileName+".txt";
-            List<int> values = new List<int>();
+            string path = @"c:\Users\Alain\Downloads\"+fileName+".txt"; //location of the file
+            List<int> values = new List<int>(); //I create an list of integers and fill it with the label of each vertex in the list of vertices
             foreach(Vertex v in vs)
             {
-                values.Add(v.data);
+                values.Add(v.label);
             }
-
-            string [] array = values.Select(x => x.ToString()).ToArray();
-
-
+            //The File.WriteAllLines C# function needs a string array in parameter so I convert my list of integers in a string array
+            string [] array = values.Select(x => x.ToString()).ToArray(); 
             // This text is added only once to the file.
             if (!File.Exists(path))
             {
@@ -58,8 +44,8 @@ namespace Graph
                  if(!visited.Contains(u))
                  {
                     visited.Add(u);
-                    foreach (int e in u.edges)
-                        S.Push(findVertexByValue(G, e));
+                    foreach (Vertex e in u.edges)
+                        S.Push(e);
                 }
             }
             saveToText(visited,"DFS");
@@ -78,8 +64,8 @@ namespace Graph
                 if (!visited.Contains(u))
                 {
                     visited.Add(u);
-                    foreach (int e in u.edges)
-                        Q.Enqueue(findVertexByValue(G, e));
+                    foreach (Vertex e in u.edges)
+                        Q.Enqueue(e);
                 }
             }
             saveToText(visited,"BFS");
@@ -98,34 +84,34 @@ namespace Graph
             Vertex eight = new Vertex(8);
             Vertex nine = new Vertex(9);
 
-            one.addEdge(2); //Node 1 is linked to Node 2
+            one.addEdge(two); //Node 1 is linked to Node 2
 
-            two.addEdge(1); //Node 2 is linked to Node 1 and four ...
-            two.addEdge(4);
+            two.addEdge(one); //Node 2 is linked to Node 1 and four ...
+            two.addEdge(four);
 
-            four.addEdge(2); //I use my function Add to create edges
-            four.addEdge(3);
-            four.addEdge(5);
+            four.addEdge(two);
+            four.addEdge(three);
+            four.addEdge(five);
 
-            three.addEdge(4);
-            three.addEdge(5);
+            three.addEdge(four);
+            three.addEdge(five);
 
-            five.addEdge(3);
-            five.addEdge(4);
-            five.addEdge(6);
+            five.addEdge(three);
+            five.addEdge(four);
+            five.addEdge(six);
 
-            six.addEdge(5);
-            six.addEdge(7);
-            six.addEdge(8);
+            six.addEdge(five);
+            six.addEdge(seven);
+            six.addEdge(eight);
 
-            seven.addEdge(6);
-            seven.addEdge(8);
+            seven.addEdge(six);
+            seven.addEdge(eight);
 
-            eight.addEdge(6);
-            eight.addEdge(7);
-            eight.addEdge(9);
+            eight.addEdge(six);
+            eight.addEdge(seven);
+            eight.addEdge(nine);
 
-            nine.addEdge(8);
+            nine.addEdge(eight);
             
             Graph myGraph = new Graph();
 
@@ -134,12 +120,12 @@ namespace Graph
 
             Vertex ten = new Vertex(10);
 
-            nine.addEdge(10); //I create a new node and link it with node 9 by adding a new edge
-            ten.addEdge(9);
+            nine.addEdge(ten); //I create a new node and link it with node 9 by adding it in the edges list of node 9, i don't forget to add node 10 to the egdes list of node 9
+            ten.addEdge(nine);
 
             myGraph.addNode(ten); //I add it to the graph
-            displayList(DFS(myGraph, one));
-            displayList(BFS(myGraph, one));
+            displayList(DFS(myGraph, one)); //Display myGraph by a DFS beginning with node one
+            displayList(BFS(myGraph, one)); //Display myGraph by a BFS beginning with node one
             Console.ReadLine();
         }
     }

@@ -83,9 +83,9 @@ namespace Lab3
         }
         static void Main(string[] args)
         {
-            //Console.WriteLine(reverseString("This is awesome"));
+            Console.WriteLine(reverseString("This is awesome"));
             //Console.WriteLine(prime(11,2));
-            Console.WriteLine(removeVocals("beautiful   ", 0));
+            //Console.WriteLine(removeVocals("beautiful   ", 0));
             Console.ReadLine();
         }
     }

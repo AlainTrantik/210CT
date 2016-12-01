@@ -17,7 +17,7 @@ namespace Graph
         }
         static void saveToText(List<Vertex> vs,string fileName) //Function to save a List of vertices in a text file
         {
-            string path = @"c:\Users\Alain\Downloads\"+fileName+".txt"; //location of the file
+            string path = @"h:\"+fileName+".txt"; //location of the file
             List<int> values = new List<int>(); //I create an list of integers and fill it with the label of each vertex in the list of vertices
             foreach(Vertex v in vs)
             {

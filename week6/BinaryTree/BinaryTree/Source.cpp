@@ -57,7 +57,7 @@ void in_order_iterative(BinTreeNode* tree){
 	BinTreeNode* current = tree;
 	S.push(current);
 	current = current->left;
-	while (!S.empty()){
+	while (!S.empty() || current){
 		if (current != NULL) {
 			S.push(current);
 			current = current->left;

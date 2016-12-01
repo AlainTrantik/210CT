@@ -35,6 +35,8 @@ namespace Lab4
          *      else
          *          return binarySearch(A, a, b, first, i-1)
          * */
+
+        //Binary search of a value in tab A between values a and b.
         static bool binarySearch(int[] A, int a ,int b, int first, int last)
         {
             if (last < first)
@@ -51,7 +53,7 @@ namespace Lab4
         static void Main(string[] args)
         {
             int[] array = { 1, 2, 3, 8, 10, 15, 21 };
-            Console.WriteLine(binarySearch(array, 4, 8, 0, array.Length - 1));
+            Console.WriteLine(binarySearch(array, 2, 5, 0, array.Length - 1));
             Console.ReadLine();
         }
     }

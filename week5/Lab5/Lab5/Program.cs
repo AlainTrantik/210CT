@@ -46,7 +46,7 @@ namespace Lab5
 
         static void Main(string[] args)
         {
-            int[] sequence = {1,2,3,1,2,3,4,5,1,2,3,4,6};
+            int[] sequence = {1,2,3,1,2,3,4,5,1,2,3,4};
             max_sub_sequence(sequence);
             Console.ReadLine();
         }

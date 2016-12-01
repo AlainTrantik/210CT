@@ -29,9 +29,9 @@ namespace Td1
             for (int i = 0; i < array.Length; i++)
             {
                 int r = rand.Next(0, array.Length);
-                int tmp = array[i];
+                int temp = array[i];
                 array[i] = array[r];
-                array[r] = tmp;
+                array[r] = temp;
             }
             Console.WriteLine("\n");
             displayArray(array);
@@ -199,10 +199,10 @@ namespace Td1
         }
         static void Main(string[] args)
         {
-            //int[] array = {1,2,3,4,5,6,7,8,9};
+            int[] array = {1,2,3,4,5,6,7,8,9};
             //shuffle(array);
-            //Console.WriteLine(zeros(Factorielle(10)));
-            Aliens(3, 5, 30); //30 days after a single alien invades
+            Console.WriteLine(zeros(Factorielle(10)));
+            //Aliens(3, 5, 30); //30 days after a single alien invades
             //sparseMatrix(3);
             Console.ReadLine();
         }

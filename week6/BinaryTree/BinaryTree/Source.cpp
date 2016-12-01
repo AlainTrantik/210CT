@@ -57,7 +57,7 @@ void in_order_iterative(BinTreeNode* tree){
 	BinTreeNode* current = tree;
 	S.push(current);
 	current = current->left;
-	while (!S.empty() || current){
+	while (!S.empty() || current!=NULL){//to go right when the root has been popped and the list is empty
 		if (current != NULL) {
 			S.push(current);
 			current = current->left;

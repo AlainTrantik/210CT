@@ -125,20 +125,38 @@ namespace Lab2
                 Console.WriteLine();
             }
         }
-        static void reverse(string s)
+
+        /*reverseString(sentence)
+               tabReversed <- [sentence.Length]
+               reversed <- ""
+               j <- 0
+               for(i <-0 To sentence.Length)
+                   if(sentence[i]!=' ')
+                       tabReversed[j] <- tabReversed[j] + sentence[i]
+                   else j <- j + 1
+               for(i <- j Downto 0)
+                   reversed <- reversed + tabReversed[i] + " "
+               return reversed
+*/
+
+        static string reverseString(string sentence)
         {
-            string [] tab=new string [s.Length];
-            int i=0;
-            string w = "";
-            while (i < s.Length && s[i] != ' ')
+            string[] wordsArray = new string[sentence.Length];	
+            string reversed = "";					
+            int j = 0;							
+            for (int i = 0; i < sentence.Length; i++)
+            {					
+                if (sentence[i] != ' ')	    //Fill each cell of tabReversed with each word of the sentence
+                    wordsArray[j] += sentence[i];			
+                else j++;							
+            }
+            for (int i = j; i >=0; i--)		
             {
-                w = w + s[i];
-                i++;
+                reversed+=wordsArray[i] + " ";	     //Display of the array upside down
             }
-            for (int i = 0; i < tab.Length;i++ ) {
-                Console.Write(tab[i] + " ");
-            }
+            return reversed;						
         }
+
         static void Main(string[] args)
         {
             //Console.WriteLine(perfectSquare(20));
@@ -149,7 +167,7 @@ namespace Lab2
             //mat3 = matTimesInt(2, mat3); //2*(B+C)
             //int[,] finalMat = matSubtraction(mat4, mat3);//(B*C)-2*(B+C)
             //displayMat(finalMat);
-            reverse("Hello world");
+            Console.WriteLine(reverseString("This is awesome"));
             Console.ReadLine();
         }
     }
